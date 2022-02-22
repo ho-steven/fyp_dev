@@ -1,0 +1,13 @@
+streamlit
+numpy
+pandas
+yfinance
+matplotlib
+beautifulsoup4
+plotly
+pytrends
+quantstats
+nltk
+pandas-datareader
+sklearn
+finvizfinance
