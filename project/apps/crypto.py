@@ -305,7 +305,7 @@ def app():
 
     
     st.write("""
-    # S&P 500 Stock Analyzer
+    # Cryptocurrency Analyzer
     Shown below are the **Fundamentals**, **News Sentiment**, **Bollinger Bands**, **Analyst Ratings**, **Google Search Trends** and **Comprehensive Report (Compared with SPY as a whole as benchmark)** of your selected stock!
        
     """)

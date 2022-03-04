@@ -125,7 +125,7 @@ def app():
     
     st.write("**System Flow Diagram**")
     from PIL import Image
-    image = Image.open('intro1.jpg')
+    image = Image.open('intro.jpg')
     st.image(image)
     st.markdown("***")
     
@@ -135,31 +135,13 @@ def app():
     st.markdown("***")
     
     st.write("**Team**")
-    st.write("Our Pre-trade analysis covers six important aspects:")    
-    st.write("1.**(Macroeconomics)** Major economic events/ development")
-    st.write("2.**(Market)** S&P 500 market analysis")
-    st.write("3.**(Technical)** Technical Indicators")
-    st.write("4.**(Fundamentals)** Balance sheets analysis")    
-    st.write("5.**(News)** News analysis and sentiment analysis")
-    st.write("6.**(Analysts/KOLs)** Analyst ratings/ Insiders trading")
+    image2 = Image.open('team.jpg')
     st.markdown("***")
     
     st.write("**Disclaimer**") 
     st.write("This website and the information provided on this website has been prepared solely for informational and educational purposes and should not be construed as an offer to buy or sell or a solicitation of an offer to buy or sell any crypto asssets or to participate in any transaction or trading activities. Before making any investment decisions, you should consider your own financial situation, investment objectives and experiences, risk acceptance and ability to understand the nature and risks of the relevant product. The website owner shall not be liable to any loss or damage incurred by any person caused by direct or indirect usage of the information or its content stated herein")     
     
-    # # ## Econ calender
-    # st.write("**Economic Calender: **")
-    # st.table(econ_events())
-    # st.markdown("***")
-    # st.write("**World Indexes Correlation Matrix: **")
-    # image2 = Image.open('corr.png')
-    # st.image(image2)
 
-    # st.markdown("***")
-    # st.write("**S&P 500 K-means clustering:**")
-    # image3 = Image.open('cluster.png')
-    # st.image(image3)    
-    # st.dataframe(cluster())
 
 
 

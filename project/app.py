@@ -9,7 +9,7 @@ app = MultiApp()
 app.add_app("Home", home.app)
 app.add_app("Crypto Market", market.app)
 app.add_app("Crypto Analyzer", crypto.app)
-app.add_app("Stategies and Portfolio Management", strategy.app)
+app.add_app("AI prediction models and Portfolio Management", strategy.app)
 
 
 # The main app
