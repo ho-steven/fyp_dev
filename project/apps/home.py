@@ -16,6 +16,7 @@ import pytrends
 
 
 def app():
+    st.balloons()
     st.title('HKU MSc(CompSc) Project 2022')
     st.header('**AI Investment Advisor in Cryptocurrency**')
     st.markdown("***")
