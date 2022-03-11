@@ -226,7 +226,7 @@ def app():
     st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
 
     Indexlist = ['cmc_rank','name','symbol','quote.USD.market_cap','quote.USD.price','quote.USD.percent_change_1h','quote.USD.percent_change_24h','quote.USD.percent_change_7d','quote.USD.percent_change_30d','quote.USD.percent_change_60d', 'quote.USD.percent_change_90d','quote.USD.volume_24h','quote.USD.volume_change_24h' ]
-    pd.set_option('precision', 2)
+    pd.set_option('display.precision', 2)
     top10_crypto = pd.read_csv("market.csv", usecols=Indexlist)[Indexlist]
     top = top10_crypto.iloc[0:]
     top.columns = ['Rank', 'Name', 'Symbol','Market Cap', 'Price (USD)',  'Price %_Change (1 hr)', 'Price %_Change (24 hrs)', 'Price %_Change (7 days)', 'Price %_Change (30 days)', 'Price %_Change (60 days)', 'Price %_Change (90 days)','Volume(24 hrs)', 'Volume %_Change (24 hrs)']
@@ -269,8 +269,8 @@ def app():
 
     #Nasdaq Crypto index (NCID)
     st.subheader("Nasdaq Crypto index (NCID)")
-    
 
+    st.markdown("***")
 
     #Cryptocurrency ETFs
     st.subheader("Blockchain/ Cryptocurrency related ETFs Performance")
