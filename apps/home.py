@@ -27,22 +27,22 @@ def app():
     
     st.subheader("System Flow Diagram")
     from PIL import Image
-    image = Image.open('intro.jpg')
+    image = Image.open("intro.JPG")
     st.image(image)
     st.markdown("***")
     
     st.subheader("Project Timeline")
-    image1 = Image.open('timeline.jpg')
+    image1 = Image.open("timeline.JPG")
     st.image(image1)
     st.markdown("***")
     
     st.subheader("Team")
-    image2 = Image.open('team.jpg')
+    image2 = Image.open("team.JPG")
     st.image(image2)
     st.markdown("***")
     
     st.subheader("Disclaimer") 
-    st.caption("This website and the information provided on this website has been prepared solely for informational and educational purposes and should not be construed as an offer to buy or sell or a solicitation of an offer to buy or sell any crypto asssets or to participate in any transaction or trading activities. Before making any investment decisions, you should consider your own financial situation, investment objectives and experiences, risk acceptance and ability to understand the nature and risks of the relevant product. The website owner shall not be liable to any loss or damage incurred by any person caused by direct or indirect usage of the information or its content stated herein")     
+    st.write("This website and the information provided on this website has been prepared solely for informational and educational purposes and should not be construed as an offer to buy or sell or a solicitation of an offer to buy or sell any crypto asssets or to participate in any transaction or trading activities. Before making any investment decisions, you should consider your own financial situation, investment objectives and experiences, risk acceptance and ability to understand the nature and risks of the relevant product. The website owner shall not be liable to any loss or damage incurred by any person caused by direct or indirect usage of the information or its content stated herein")     
     
 
 
