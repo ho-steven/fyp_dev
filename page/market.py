@@ -126,12 +126,13 @@ def media():
 def nci():
     today = datetime.today().strftime('%d/%m/%Y')
     search_result = investpy.search_quotes(text='ncid', products=['indices'], countries=['united states'], n_results=1)
-
+    time.sleep(2)
     historical_data = search_result.retrieve_historical_data(from_date='16/04/2021', to_date=today)
     historical_data.to_csv('csv/ncid1.csv')
+    time.sleep(2)
     t_indicator_1h = search_result.retrieve_technical_indicators(interval="1hour")
     t_indicator_1h.to_csv("csv/ncid_1h.csv",index=False)     
-    
+    time.sleep(2)
     t_indicator_1d = search_result.retrieve_technical_indicators(interval="daily")
     t_indicator_1d.to_csv("csv/ncid_1d.csv",index=False)  
     
