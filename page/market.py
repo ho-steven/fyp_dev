@@ -4,7 +4,6 @@ import numpy as np
 import yfinance as yf
 from datetime import datetime, date
 import matplotlib.pyplot as plt
-import talib 
 import matplotlib.ticker as mticker
 import requests
 from bs4 import BeautifulSoup
