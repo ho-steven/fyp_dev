@@ -17,3 +17,4 @@ finvizfinance
 whale-alert
 beautifulsoup4
 seaborn
+investpy

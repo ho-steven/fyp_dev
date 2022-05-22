@@ -27,6 +27,9 @@ import pandas_datareader.data as web
 import seaborn as sns
 import matplotlib.dates as mdates
 import plotly.express as px
+import investpy
+
+
 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -120,6 +123,18 @@ def media():
     except Exception as e:
         print(traceback.format_exc())
 
+def nci():
+    today = datetime.today().strftime('%d/%m/%Y')
+    search_result = investpy.search_quotes(text='ncid', products=['indices'], countries=['united states'], n_results=1)
+
+    historical_data = search_result.retrieve_historical_data(from_date='16/04/2021', to_date=today)
+    historical_data.to_csv('csv/ncid1.csv')
+    t_indicator_1h = search_result.retrieve_technical_indicators(interval="1hour")
+    t_indicator_1h.to_csv("csv/ncid_1h.csv",index=False)     
+    
+    t_indicator_1d = search_result.retrieve_technical_indicators(interval="daily")
+    t_indicator_1d.to_csv("csv/ncid_1d.csv",index=False)  
+    
 
 def etf():
     import csv
@@ -154,7 +169,7 @@ def get_market():
     st.subheader('Market Infographics')
     url2 = 'https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest'
 
-    #totalmarket(url2)
+    totalmarket(url2)
     Indexlist1 = ['quote.USD.total_market_cap','quote.USD.total_market_cap_yesterday','quote.USD.total_market_cap_yesterday_percentage_change' ]
     Indexlist2 = ['quote.USD.total_volume_24h','quote.USD.total_volume_24h_yesterday','quote.USD.total_volume_24h_yesterday_percentage_change']
     Indexlist3 = ['active_cryptocurrencies','total_cryptocurrencies','active_market_pairs']
@@ -202,7 +217,7 @@ def get_market():
     st.subheader('Top 10 Cryptocurrencies')
 
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
-    #market(url) 
+    market(url) 
 
     #Plot Bar Chart for Top 10 Cryptocurrencies
     top10_simple = pd.read_csv("csv/market.csv", usecols=['symbol','quote.USD.market_cap_dominance'])
@@ -279,7 +294,7 @@ def get_market():
         "Input start date",
         date(2021, 1, 1))
     end = st.date_input(
-        "Input start date",
+        "Input end date",
         date.today())
 
     btc = yf.download("BTC-USD", start=start, end=end)
@@ -341,7 +356,7 @@ def get_market():
         from PIL import Image
         image_corr = Image.open("Images/corr.png")
         st.image(image_corr, caption='Correlation Matrix based on adjusted close price')
-        st.image(image)
+
 
     with col3:
         st.write(' ')
@@ -352,7 +367,7 @@ def get_market():
     
     #Whale
     #From whale-alert
-    #transaction()
+    transaction()
     st.subheader("Whale Alerts")
     st.write("The term “whale” is used to describe an individual or organization that holds a large amount of a particular cryptocurrency.")
     st.write("This section will display recent 30 whale alerts with transaction amount > US$500K.(Source: whale-alert.io)")
@@ -368,8 +383,8 @@ def get_market():
     #Cryptocurrency News
     st.subheader("Market News and Media")
     st.write("This section will display the recent market news and published media related to Crypto Market. (Source: cryptopanic.com)")
-    #news()
-    #media()
+    news()
+    media()
     Indexlist_news = ['kind','domain','title','published_at','url','source.title','votes.negative','votes.positive','votes.important','votes.liked','votes.disliked','currencies']
     crypto_news = pd.read_csv("csv/news.csv", usecols=Indexlist_news)
     crypto_news.columns = ['Kind','Source Domain','Title','Published Time','URL','Source Title','Negative Votes','Positive Votes','Important Votes','Likes Count','Dislikes Count','Currencies']
@@ -386,8 +401,8 @@ def get_market():
     st.subheader("Nasdaq Crypto index (NCID)")
     st.write("The Nasdaq Crypto Index is designed to measure the performance of a material portion of the overall digital asset market. Digital assets are eligible for inclusion in the Index if they satisfy the criteria set forth under “Index Eligibility.” The Index periodically adjusts Index Constituents and weightings to reflect changes in the digital asset market.")
     st.write("For more details, please visit https://indexes.nasdaq.com/docs/methodology_NCIS.pdf")
-    #nci()
-    ncid = pd.read_csv("csv/ncid.csv")
+    nci()
+    ncid = pd.read_csv("csv/ncid1.csv")
     #print(ncid.at[165, 'Low'])
     ncid.at[165, "Low"] = 3159.8
     fig = go.Figure(data=[go.Candlestick(x=ncid['Date'],
@@ -397,8 +412,8 @@ def get_market():
                 close=ncid['Close'])])
     st.plotly_chart(fig, use_container_width=True)
 
-    nci_1h = pd.read_csv("csv/nci_1h.csv")
-    nci_1d = pd.read_csv("csv/nci_1d.csv")
+    nci_1h = pd.read_csv("csv/ncid_1h.csv")
+    nci_1d = pd.read_csv("csv/ncid_1d.csv")
     nci_merge = pd.merge(nci_1h, nci_1d, on="indicator")
     nci_merge.columns = ['Technical Indicators','Signal (1 Hour)','Value (1 Hour)','Signal (1 Day)','Value (1 Day)']
     st.dataframe(nci_merge)
@@ -409,7 +424,7 @@ def get_market():
     #Cryptocurrency ETFs
     st.subheader("Blockchain/ Cryptocurrency related ETFs Performance")
     st.write("This is a list of major Blockchain ETFs traded in the USA.(* Assets in thousands of U.S. Dollars.)(Source: etfdb.com) ")
-    #etf()
+    etf()
     crypto_etf = pd.read_csv("csv/table_data.csv")
     crypto_etf.drop(crypto_etf.tail(1).index,inplace=True)
     crypto_etf = crypto_etf.iloc[: , :-24]

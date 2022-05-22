@@ -14,7 +14,7 @@ st.set_page_config(
     initial_sidebar_state="auto",)
 
 
-st.subheader('HKU MSc(CompSc) Project 2022')
+st.subheader('HKU MSc(CompSc) Project 2022 [MSP21007](https://wp.cs.hku.hk/2021/msp21007/)')
 st.markdown("<center><h1 Style=\"overflow: visible; padding-bottom: 50px; padding-top: 0px;\">AI Investment Advisor in Cryptocurrency</h1></center>", unsafe_allow_html=True)
 components.html(
     """
