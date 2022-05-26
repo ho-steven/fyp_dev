@@ -1,13 +1,13 @@
 indicator,signal,value
-RSI(14),sell,44.933
-"STOCH(9,6)",sell,21.625
-STOCHRSI(14),sell,34.258
-"MACD(12,26)",sell,-11.9
-ADX(14),neutral,13.182
-Williams %R,sell,-68.729
-CCI(14),sell,-53.0479
-ATR(14),less_volatility,23.0528
-Highs/Lows(14),sell,-11.85
-Ultimate Oscillator,sell,41.414
-ROC,sell,-1.61
-Bull/Bear Power(13),sell,-9.806
+RSI(14),sell,40.219
+"STOCH(9,6)",buy,69.548
+STOCHRSI(14),sell,35.362
+"MACD(12,26)",sell,-8.9
+ADX(14),sell,26.432
+Williams %R,neutral,-52.496
+CCI(14),sell,-183.066
+ATR(14),high_volatility,24.075
+Highs/Lows(14),sell,-26.2871
+Ultimate Oscillator,sell,47.803
+ROC,sell,-2.075
+Bull/Bear Power(13),sell,-89.7679
