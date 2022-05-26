@@ -137,7 +137,7 @@ def get_btc():
 
 
     #with st.expander(" 👁  Bitcoin white paper "):
-    st_display_pdf("white_paper/bitcoin.pdf")
+    #st_display_pdf("white_paper/bitcoin.pdf")
     st.write("")
     st.header("Github Open Source Code")
     st.write('[Bitcoin Open Source Code Link](https://github.com/bitcoin)')
@@ -254,7 +254,7 @@ def get_eth():
         st.markdown(pdf_display, unsafe_allow_html=True)
 
     
-    st_display_pdf("white_paper/ethereum.pdf")
+    #st_display_pdf("white_paper/ethereum.pdf")
     st.write("")
     st.header("Github Open Source Code")
     st.write('[Ethereum Open Source Code Link](https://github.com/ethereum)')
@@ -356,7 +356,7 @@ def get_bnb():
         st.markdown(pdf_display, unsafe_allow_html=True)
 
     
-    st_display_pdf("white_paper/binance.pdf")
+    #st_display_pdf("white_paper/binance.pdf")
     st.write("References: Yahoo Finance, CoinMarketCap, Binance Research")
     st.write("")
     st.header("Github Open Source Code")
@@ -459,7 +459,7 @@ def get_sol():
         st.markdown(pdf_display, unsafe_allow_html=True)
 
     
-    st_display_pdf("white_paper/solana.pdf")
+    #st_display_pdf("white_paper/solana.pdf")
 
     st.write("")
     st.header("Github Open Source Code")
