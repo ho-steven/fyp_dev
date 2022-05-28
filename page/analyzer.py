@@ -4,41 +4,7 @@ from streamlit_lottie import st_lottie_spinner
 import streamlit.components.v1 as components
 from crypto import ada, bit, eth, xlm, ltc, usdt, dot, bch, doge, shib
 
-def user_input_features(ticker, period):
-    today = date.today()
-    #ticker = st.sidebar.selectbox("Ticker", ('BTC/USDT','ETH/USDT','BNB/USDT','SOL/USDT'))
-    #period = st.sidebar.selectbox("Period", ('1d','1h','1m'))
-    if period == '1day': 
-        start_date = st.sidebar.date_input("Start Date", date(2020, 1, 1))
-        end_date = st.sidebar.date_input("End Date", date.today())        
-        return ticker, start_date, end_date
-    elif period == '1h':
-        no_of_hrs_analysis = st.sidebar.radio("Number of Hours for analysis", ["1000"])
-        return ticker, no_of_hrs_analysis
-    elif period == '1min':
-        no_of_mins_analysis = st.sidebar.radio("Number of Minutes for analysis", ["1000"])
-        return ticker, no_of_mins_analysis
-        
 
-def time_series_1d(ticker, period, start, end ):
-
-    # Initialize client - apikey parameter is requiered
-    td = TDClient(apikey="6b27384627a5423aa7b69032d14d9ca8")
-
-    # Construct the necessary time series (interval:1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month)
-    ts = td.time_series(
-        symbol=ticker,
-        interval=period,
-        outputsize='1000',
-        exchange='Binance', 
-        start_date=start,
-        end_date=end,
-        timezone="America/New_York",
-    )
-
-    # Returns pandas.DataFrame
-    time_s_1d = ts.as_pandas() 
-    st.dataframe(time_s_1d)
 
 #https://github.com/Japan745/CryptoBase
 ## Technical indicators to be used
@@ -70,6 +36,402 @@ def get_analyzer():
     # lottie_json = load_lottieurl(lottie_url)
 
     st.warning("Under Construction")
+
+
+    with st.form(key='my_form'):
+        ticker = st.selectbox('Select Ticker',
+                              ['BTC/USD','ETH/USD','BNB/USD','SOL/USD','BNB/BTC','BNB/ETH','ETH/BTC', 'SOL/BNB', 'SOL/BTC'])
+        #period = st.selectbox("Period", ('1day','1h','1min'))
+        width = st.slider("Set the width of the real-time chart ", 200, 1800, 1100, 100) 
+        submit_button = st.form_submit_button(label='Submit')
+    height = 800
+  
+    if submit_button:
+        if ticker == "BTC/USD":      
+            get_btcusd(height, width)   
+        if ticker == "ETH/USD":          
+            get_ethusd(height, width)
+        if ticker == "BNB/USD":
+            get_bnbusd(height, width)
+        if ticker == "SOL/USD":
+            get_solusd(height, width)
+        if ticker == "BNB/BTC":
+            get_bnbbtc(height, width)
+        if ticker == "BNB/ETH":
+            get_bnbeth(height, width)
+        if ticker == "ETH/BTC":
+            get_ethbtc(height, width)        
+        if ticker == "SOL/BNB":
+            get_solbnb(height, width)
+        if ticker == "SOL/BTC":
+            get_solbtc(height, width)
+
+
+
+def get_btcusd(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:BTCUSD",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+def get_ethusd(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:ETHUSD",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+def get_bnbusd(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:BNBUSD",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+def get_solusd(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:SOLUSD",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+def get_bnbbtc(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:BNBBTC",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+
+def get_bnbeth(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:BNBETH",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+
+def get_ethbtc(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:ETHBTC",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+
+def get_solbnb(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:SOLBNB",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+def get_solbtc(height, width):
+
+    components.html(
+        f"""
+        <div class="tradingview-widget-container">
+        <div id="tradingview_c2f24"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+
+        new TradingView.widget(
+        {{
+        "width": {width},
+        "height": {height},
+        "symbol": "BINANCE:SOLBTC",
+        "interval": "D",
+        "timezone": "Asia/Hong_Kong",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "studies": [
+            "BB@tv-basicstudies",
+            "MACD@tv-basicstudies",
+            "RSI@tv-basicstudies",
+            "WilliamR@tv-basicstudies"
+        ],
+        "container_id": "tradingview_c2f24"
+        }}
+        );
+
+        </script>
+        </div>
+        """,
+        height=height,
+        width=width,
+    )
+
+
 # https://assets10.lottiefiles.com/packages/lf20_8lcyef9f.json
 # https://assets1.lottiefiles.com/packages/lf20_2xgpnwrq.json
 # https://assets3.lottiefiles.com/packages/lf20_aj79ghex.json
@@ -107,6 +469,42 @@ def get_analyzer():
     #AI Models (logistic regression, LSTM, Random Forest)
     #BNB/ETH, BNB/USD, BNB/BTC, BTC/USD, ETH/BTC, ETH/USD, SOL/BNB, SOL/BTC, SOL/USD, SOL/ETH (Huobi)
 
+# def user_input_features(ticker, period):
+    # today = date.today()
+    # #ticker = st.sidebar.selectbox("Ticker", ('BTC/USDT','ETH/USDT','BNB/USDT','SOL/USDT'))
+    # #period = st.sidebar.selectbox("Period", ('1d','1h','1m'))
+    # if period == '1day': 
+        # start_date = st.sidebar.date_input("Start Date", date(2020, 1, 1))
+        # end_date = st.sidebar.date_input("End Date", date.today())        
+        # return ticker, start_date, end_date
+    # elif period == '1h':
+        # no_of_hrs_analysis = st.sidebar.radio("Number of Hours for analysis", ["1000"])
+        # return ticker, no_of_hrs_analysis
+    # elif period == '1min':
+        # no_of_mins_analysis = st.sidebar.radio("Number of Minutes for analysis", ["1000"])
+        # return ticker, no_of_mins_analysis
+        
+
+# def time_series_1d(ticker, period, start, end ):
+
+    # # Initialize client - apikey parameter is requiered
+    # td = TDClient(apikey="6b27384627a5423aa7b69032d14d9ca8")
+
+    # # Construct the necessary time series (interval:1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 8h, 1day, 1week, 1month)
+    # ts = td.time_series(
+        # symbol=ticker,
+        # interval=period,
+        # outputsize='1000',
+        # exchange='Binance', 
+        # start_date=start,
+        # end_date=end,
+        # timezone="America/New_York",
+    # )
+
+    # # Returns pandas.DataFrame
+    # time_s_1d = ts.as_pandas() 
+    # st.dataframe(time_s_1d)
+
     # st.sidebar.header('User Input Parameters')
     # ticker = st.sidebar.selectbox("Ticker", ('BTC/USD','ETH/USD','BNB/USD','SOL/USD','BNB/BTC','BNB/ETH','ETH/BTC', 'SOL/BNB', 'SOL/BTC'))
     # period = st.sidebar.selectbox("Period", ('1day','1h','1min'))
@@ -128,49 +526,6 @@ def get_analyzer():
 
     #ticker = st.sidebar.selectbox("Ticker", ('BTC/USDT','ETH/USDT','BNB/USDT','SOL/USDT'))
     #period = st.sidebar.selectbox("Period", ('1d','1h','1m'))
-
-    with st.form(key='my_form'):
-        ticker = st.selectbox('Select Ticker',
-                              ['BTC/USD','ETH/USD','BNB/USD','SOL/USD','BNB/BTC','BNB/ETH','ETH/BTC', 'SOL/BNB', 'SOL/BTC'])
-        period = st.selectbox("Period", ('1day','1h','1min'))
-        submit_button = st.form_submit_button(label='Submit')
-
-
-    height = 600
-    width = st.slider("Set the width of the chart ", 200, 1800, 800, 100)
-
-    components.html(
-        f"""
-        <div class="tradingview-widget-container">
-        <div id="tradingview_c2f24"></div>
-
-        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-        <script type="text/javascript">
-
-        new TradingView.widget(
-        {{
-        "width": {width},
-        "height": {height},
-        "symbol": "BINANCE:BTCUSD",
-        "interval": "D",
-        "timezone": "Asia/Hong_Kong",
-        "theme": "light",
-        "style": "1",
-        "locale": "en",
-        "toolbar_bg": "#f1f3f6",
-        "enable_publishing": false,
-        "allow_symbol_change": true,
-        "container_id": "tradingview_c2f24"
-        }}
-        );
-
-        </script>
-        </div>
-        """,
-        height=height,
-        width=width,
-    )
-
 
 
     #if submit_button:

@@ -41,3 +41,38 @@ def get_forecast():
                 with st_lottie_spinner(lottie_json):
                     eth_trading.get_eth_trading()
 
+
+#https://tradingview.brianthe.dev/
+#https://investpy.readthedocs.io/_info/introduction.html
+
+#https://github.com/twopirllc/pandas-ta#candles-64
+#https://pypi.org/project/candlestick-patterns-subodh101/
+#https://www.aquaq.co.uk/identifying-japanese-candle-sticks-using-python/
+#https://github.com/SpiralDevelopment/candlestick-patterns
+
+#news
+#https://steemit.com/cryptocurrency/@firstaeon/fetch-cryptopanic-api-for-cryptocurrency-news-using-python
+
+#https://github.com/SanjoShaju/Cryptocurrency-Analysis-Python#cryptocurrency-sentiment-analysisipynb
+
+#https://www.atoti.io/articles/how-im-failing-my-twitter-sentiment-analysis-for-cryptocurrency-prediction/
+
+#https://cryptopanic.com/news/14520233/95M-of-Shorts-Liquidated-as-Bitcoin-Ether-Rise-8
+
+#https://newsdata.io/docs
+#https://newsapi.org/docs/endpoints
+
+#Twitter ***
+#https://github.com/Drabble/TwitterSentimentAndCryptocurrencies
+#https://www.analyticsvidhya.com/blog/2021/06/twitter-sentiment-analysis-a-nlp-use-case-for-beginners/
+
+#social media
+#https://pypi.org/project/lunarcrush/
+
+#https://twelvedata.com/docs#exchange-rate
+
+
+#Price Prediction
+#https://thecleverprogrammer.com/2021/12/27/cryptocurrency-price-prediction-with-machine-learning/
+
+#https://medium.com/analytics-vidhya/bitcoin-price-prediction-with-random-forest-and-technical-indicators-python-560800d6f3cd
