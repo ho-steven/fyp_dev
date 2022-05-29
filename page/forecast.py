@@ -63,8 +63,19 @@ def get_forecast():
 #https://newsapi.org/docs/endpoints
 
 #Twitter ***
+#API key: fDNn9PgvwBNf8b5YkqVdexWy8
+# API Secret: sjW9xy6ckF0wRDJKpdKNa1qoBg7lDaYk8421wSqDCloslXxWhq
+# Bearer Token: AAAAAAAAAAAAAAAAAAAAAEpsdAEAAAAAZv9ZkZEGYDInn%2B1dlv%2Fd%2Bxn1j%2Bk%3D3MDLpPo82rfpQjpBRhDVyzukRHsT2KHT9dERAib0GLZJS3GnW1
+#1530761395138359296-Q2BphWd2qzGTh0dl1AhTk2ZHiJ33uV
+#i1D7upqRuoNHYxRE4lWluT5Z3LTQlrDxmMC0vPq4MX5Wr
+#https://colab.research.google.com/drive/1afUKtKBCdi6nO2n39iIGCaSfqUg3GAMJ#scrollTo=VDNM2RrQBapg
 #https://github.com/Drabble/TwitterSentimentAndCryptocurrencies
 #https://www.analyticsvidhya.com/blog/2021/06/twitter-sentiment-analysis-a-nlp-use-case-for-beginners/
+#https://medium.com/thedevproject/powerful-twitter-sentiment-analysis-in-under-35-lines-of-code-a80460db24f6
+#https://github.com/Amey23/Twitter-Sentimental-Analysis/blob/master/Twitter%20Sentiment%20Analysis.ipynb
+#https://colab.research.google.com/drive/1H7CMXEdlrigAdv3ensC6u8-Y-KNOUbu3#scrollTo=177256bf
+#https://colab.research.google.com/github/mrdbourke/tensorflow-deep-learning/blob/main/10_time_series_forecasting_in_tensorflow.ipynb
+
 
 #social media
 #https://pypi.org/project/lunarcrush/
@@ -76,3 +87,13 @@ def get_forecast():
 #https://thecleverprogrammer.com/2021/12/27/cryptocurrency-price-prediction-with-machine-learning/
 
 #https://medium.com/analytics-vidhya/bitcoin-price-prediction-with-random-forest-and-technical-indicators-python-560800d6f3cd
+
+
+#Random Forest
+#https://medium.com/@maryamuzakariya/project-predict-stock-prices-using-random-forest-regression-model-in-python-fbe4edf01664
+#https://medium.com/analytics-vidhya/bitcoin-price-prediction-with-random-forest-and-technical-indicators-python-560800d6f3cd
+#ta
+#https://github.com/bukosabino/ta/blob/master/examples_to_use/visualize_features.ipynb
+
+
+#https://twelvedata.com/docs#technical-indicators
