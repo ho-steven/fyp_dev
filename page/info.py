@@ -118,7 +118,8 @@ def get_btc():
     st.header("Mechanism of Bitcoin")
     st.write("The Bitcoin protocol uses an SHA-256d-based Proof-of-Work (PoW) algorithm to reach network consensus. Its network has a target block time of 10 minutes and a maximum supply of 21 million tokens, with a decaying token emission rate. To prevent fluctuation of the block time, the network's block difficulty is re-adjusted through an algorithm based on the past 2016 block times.")
     st.write("With a block size limit capped at 1 megabyte, the Bitcoin Protocol has supported both the Lightning Network, a second-layer infrastructure for payment channels, and Segregated Witness, a soft-fork to increase the number of transactions on a block, as solutions to network scalability.")
-
+    st.write("Being the world’s most popular cryptocurrency, Bitcoin has created a new fundamental way to process payments without a centralized party (William, 2020). It is a blockchain that adopt secured distributed ledger that created a decentralized payment system to proceed payments via encryption and validations by peers. And through mining bitcoin, the blockchain consists with blocks to store and validate all the transactions, as well as use the codes to execute transactions.")
+    st.write("Satoshi also argued that there are mainly two options about bitcoin mining mechanisms: either to allocate Bitcoin to all users by one-IP-address-one-vote, or else, to make it being allocated to computing power – ‘one-CPU-one-vote’, as if miners obtain Bitcoins via transaction, which could be viewed as an incentive mechanism (Wright, 2020).")
     st.header("Bitcoin White Paper")
 
     with open("white_paper/bitcoin.pdf", "rb") as file:
@@ -214,7 +215,7 @@ def get_eth():
     st.plotly_chart(fig, use_container_width=True)
 
     st.header("Introduction")
-    st.write("As the second largest cryptocurrency that could apply in multiple functions to perform payments as international transfer service, however it carried the largest network consisting of smart contracts, which has made it one of the most popular currencies especially in terms of functionality. As of May 2022, Ethereum contains the second highest market cap at over USD$238 trillion, which is the closest rival to Bitcoin.")
+    st.write("Ethereum (ETH) is the second largest cryptocurrency that could apply in multiple functions to perform payments as international transfer service, however it carried the largest network consisting of smart contracts, which has made it one of the most popular currencies especially in terms of functionality (Hushan, 2020). As of May 2022, Ethereum contains the second highest market cap at over USD$239 trillion, which is the closest rival to Bitcoin.")
 
     st.header("Mechanism of Ethereum")
     st.write("The Ethereum platform supports ether in addition to a network of decentralized apps, otherwise known as "
@@ -336,8 +337,8 @@ def get_bnb():
     st.write("As the native cryptocurrency of Binance Exchange, investors can use Binance Coin to make online and in-store purchase, as well as create smart contracts, travel bookingand offer lending, in general to utilize use cases for performing multiple functions (Moore, 2022). Created by Zhao since 2017, Binance has also proven it to be one of the best performed cryptocurrencies in recent years, as of May 2022, Binance Coin has the fifth largest market cap at over USD$52 trillion.")
 
     st.header("Mechanism of Binance Coin")
-    st.write("Binance Coin was initially based on Ethereum blockchain network, but now the native currency has already transited to Binance’s own blockchain network – called the Binance Chain. In 2021, Binance Coin has launched an automatic burn feature that could offer a longer standing deflationary mechanism")
-
+    st.write("Binance Coin was initially based on Ethereum blockchain network, but now the native currency has already transited to Binance’s own blockchain network – called the Binance Chain. In 2021, Binance Coin has launched an automatic burn feature that could offer a longer standing deflationary mechanism.")
+    st.write("Nevertheless, it has been argued that given the environment of multiple functions offered by Binance Coin are appeared decentralization system, the cryptocurrency is somehow in the oversight of Binance operations which might consider a fairly centralized structure.  Giving a various way in utilizing the usage of Binance Coin, it still became the one of top cryptocurrencies.")
  
              
     st.header("Binance Coin White Paper")
@@ -440,7 +441,7 @@ def get_sol():
     st.write("As another popular open-source blockchains, Solana also has smart contract functionality in hosting decentralized applications. It was developed on an application called Rust that builds a wide variety of applications; thus, the system of Solana is easier and more accessible for deploying apps and further development among developers, which encourage an exponential growth of the ecosystem (Karuki, 2022).")
 
     st.header("Mechanism of Solana")
-    st.write("Compared to Bitcoin and Ethereum, Solana is a system replying on Proof of History (POH), that involves a certain procedure of sequential computational steps, in which could make decision between time gap between events by giving it a time stamp, especially with its advantage of high-speed capabilities to offer to its investors as it can process 65,000 transactions per second, block time is just one second.")
+    st.write("The official website of Solana describes Solana the fastest blockchain as well the growing ecosystem in spanning projects across DeFi, NFTs, Web3 and more (Solana.com, 2022) Compared to Bitcoin and Ethereum, Solana is a system replying on Proof of History (POH), that involves a certain procedure of sequential computational steps, in which could make decision between time gap between events by giving it a time stamp, especially with its advantage of high-speed capabilities to offer to its investors as it can process 65,000 transactions per second, block time is just one second.")
 
        
     st.header("Solana White Paper")

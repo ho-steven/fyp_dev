@@ -14,13 +14,32 @@ def get_home():
         
         
         st.subheader("Introduction")
-        st.write("To develop an AI investment advisor in Cryptocurrency that contains a prediction model to forecast multiple cryptocurrency prices including Bitcoin (BTC), Ethereum (ETH), Binance Coin (BNB) and Solana (SOL) with upward/downward trend in pair coin trading, additionally to develop a centric-design portfolio management tool on a web-based platform, contains a variety of customized data analytic dashboard and charting tools to provide a comprehensive trading overview and prediction with frequently-updated processed data.")
+        st.write("To develop an AI investment advisor in Cryptocurrency that contains a prediction model to forecast multiple cryptocurrency prices including Bitcoin (BTC), Ethereum (ETH), Binance Coin (BNB) and Solana (SOL) with upward/downward trend and pair coin trading, additionally to develop a centric-design portfolio management tool on a web-based platform, contains a variety of customized data analytic dashboard and charting tools to provide a comprehensive trading overview and prediction with frequently-updated processed data. The analyser could fulfil an increasing demand from investors who look for advanced tools to overview their trading strategy and portfolio of cryptocurrencies, by bringing them a hybrid financial advisor targeting various levels of investors with a nimble and informative platform for accessing latest information and market trend, price prediction with personalized needs on portfolio advice.")
         st.markdown("***")
         
         st.subheader("Project Objectives")
-        st.write("In this project, several machine learning models would be explored and applied as key components throughout the experiment design in hybrid approach, combining trained algorithms and artificial intelligence techniques to forecast cryptocurrency prices based on prices, volume, market capitalization, volatility, additionally with non-technical factors that filtered from news sentiment analysis.")
-        st.write("Three commonly used machine learning models will be covered in this project including Logistic Regression Model, Long Short-term Memory (LSTM), and News Sentiment Analysis.")
-        st.write("For developing a financial screener with allocate cryptocurrencies (BTC, ETH, BNB and SOL) individually and coin-pairing to maximize the return of the portfolio within the risk threshold of the user by trending analysis, trading and swapping coin signals, order to provide an investor centric-design web application that allows users to specify their risk threshold interact with the system and see the performance of their portfolio. Key mechanism of portfolio management aims to maximize profit and minimize risk by coin trading among the four selected cryptocurrency, instead of buy/sell for stable coins. Thus, to bring academic contribution to the research area in swapping cryptocurrency using ML techniques.")
+        st.write("Cryptocurrency has been a popular topic in the financial industry recent years with its rapid growth of penetration into the societies and influencing investment mindset of the young generations and the entire ecosystem. Although a dramatic expansion of the emerging crypto industry has drawn public attention and impacts to the traditional financial industry, there is still a lot of room to improve the existing financial analyser platforms with sufficient research and technical investigation to the cryptocurrency market. Such a speedy pace of industry nature has also made it more challenging to build an enhanced prediction model to forecast the market trend and provide investment advice by building a personalized portfolio of cryptocurrencies especially in coin swapping with multiple factor analysis than traditional stocks.")
+
+        col10, col11, col12 = st.columns([3, 5, 3])
+
+        with col10:
+            st.write(' ')
+
+        with col11:
+            from PIL import Image
+            image4 = Image.open("Images/problem_statement.jpg")
+            st.image(image4)
+
+        with col12:
+            st.write(' ')
+
+
+        st.write("Meanwhile, the experiment design could solve some practical problems by improving current machine learning techniques, thus making a contribution to the financial industry by solving problems for investors in the real world. Three main machine learning model techniques – Random Forest, Long Short-term Memory (LSTM), and News Sentiment Analysis would be explored and applied as key components throughout the experiment design in a comprehensive approach, combining trained algorithms and artificial intelligence techniques to forecast cryptocurrency prices based on prices, volume, market capitalization, volatility, additionally to provide prediction with insightful predictions and non-technical factors considered from news sentiment analysis.")
+        st.markdown("**Advanced portfolio management and investment advice in coin swapping**")
+        st.write("For developing a financial screener with allocate cryptocurrencies (Bitcoin, Ethereum, Solana and Binance Coin) individually and coin-pairing to maximize the return of the portfolio within the risk threshold of the user by trending analysis, trading and swapping coin signals, order to provide an investor centric-design web application that allows users to specify their risk threshold interact with the system and see the performance of their portfolio.")
+        st.write("Key mechanism of portfolio management aims to maximize profit and minimize risk by coin trading among the four selected cryptocurrencies instead of buying or selling with stable coins. Thus, to bring academic contribution to the research area in swapping cryptocurrencies using Machine Learning techniques on top of prediction on traditional trading techniques.")
+        st.markdown("**Hybrid financial analyser with combination of financial and non-financial factors**")
+        st.write("Another essential contribution from this project to the research area of price predictions is regarding the enhanced system flow design by combining machine learning models with both financial and non-financial factors. The cause was due to previous research results are lacking stock and cryptocurrencies price prediction by considering multiple factors in timely manner. Further mechanism details and future work would be explained in later sessions.")
         st.markdown("***")
         
         st.subheader("System Flow Diagram")
@@ -30,7 +49,7 @@ def get_home():
             st.write(' ')
 
         with col2:
-            from PIL import Image
+            
             image = Image.open("Images/intro.jpg")
             st.image(image)
 
@@ -39,7 +58,7 @@ def get_home():
         st.markdown("***")
 
         
-        st.subheader("Project Timeline")       
+        st.subheader("Implementation Schedule and Milestones")       
 
         col4, col5, col6 = st.columns([3, 5, 3])
 
@@ -47,7 +66,7 @@ def get_home():
             st.write(' ')
 
         with col5:
-            image1 = Image.open("Images/timeline.jpg")
+            image1 = Image.open("Images/milestones.jpg")
             st.image(image1)
 
         with col6:
@@ -64,7 +83,7 @@ def get_home():
             st.write(' ')
 
         with col8:
-            image2 = Image.open("Images/team.jpg")
+            image2 = Image.open("Images/member.jpg")
             st.image(image2)
 
         with col9:
@@ -75,330 +94,4 @@ def get_home():
         
         st.subheader("Disclaimer") 
         st.write("This website and the information provided on this website has been prepared solely for informational and educational purposes and should not be construed as an offer to buy or sell or a solicitation of an offer to buy or sell any crypto asssets or to participate in any transaction or trading activities. Before making any investment decisions, you should consider your own financial situation, investment objectives and experiences, risk acceptance and ability to understand the nature and risks of the relevant product. The website owner shall not be liable to any loss or damage incurred by any person caused by direct or indirect usage of the information or its content stated herein")     
-        # url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
-        # headers = {
-                # 'Accepts': 'application/json',
-                # 'X-CMC_PRO_API_KEY': 'f196187f-d576-4c6c-8d4c-d35a4bab8511',
-        # }
-        # def get_btc():
-                # parameters = {'slug': 'bitcoin', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['1']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['1']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['1']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['1']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['1']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['1']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['1']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.bit_color = week_per_ch
-                # cl1,col1, col2, col3,col4,g1 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl1:
-                        # st.write(1)
-                # with col1:
-                        # st.image("Images/bitcoin.png")
-                # with col2:
-                        # st.metric(label='Bitcoin BTC ', value=("$"+str(round(price, 2))), delta=str(round(hour24, 2)) + "%")
-                # with col3:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col4:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))), delta=str(round(marketcap_ch, 2)) + "%")
-                # with g1:
-                        # st.write("7 days graph")
-                        # cryptographs.get_btc_graph()
-
-        # def get_eth():
-                # parameters = {'slug': 'ethereum', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['1027']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['1027']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['1027']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['1027']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['1027']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['1027']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['1027']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.eth_color = week_per_ch
-                # cl2,col5, col6, col7,col8,g2 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl2:
-                        # st.write(2)
-                # with col5:
-                        # st.image("Images/ethereum.png")
-                # with col6:
-                        # st.metric(label="Ethereum (ETH)", value=("$"+str(round(price, 2))), delta=str(round(hour24, 2)) + "%")
-                # with col7:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col8:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g2:
-                        # st.write("7 days graph")
-                        # cryptographs.get_eth_graph()
-
-        # def get_xlm():
-                # parameters = {'slug': 'stellar', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['512']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['512']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['512']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['512']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['512']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['512']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['512']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.xlm_color = week_per_ch
-                # cl3,col9, col10, col11,col12,g3 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl3:
-                        # st.write(3)
-                # with col9:
-                        # st.image("Images/xlmcoin.png")
-                # with col10:
-                        # st.metric(label="Stellar (XLM)", value=("$"+str(round(price, 2))), delta=str(round(hour24, 2)) + "%")
-                # with col11:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col12:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g3:
-                        # st.write("7 days graph")
-                        # cryptographs.get_xlm_graph()
-
-        # def get_usdt():
-                # parameters = {'slug': 'tether', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['825']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['825']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['825']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['825']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['825']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['825']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['825']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.usdt_color = week_per_ch
-                # cl4,col13, col14, col15,col16,g4 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl4:
-                        # st.write(4)
-                # with col13:
-                        # st.image("Images/usdtcoin.png")
-                # with col14:
-                        # st.metric(label="Tether (USDT)", value=("$"+str(round(price, 2))), delta=str(round(hour24, 2)) + "%")
-                # with col15:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col16:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g4:
-                        # st.write("7 days graph")
-                        # cryptographs.get_usdt_graph()
-
-        # def get_bch():
-                # parameters = {'slug': 'bitcoin-cash', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['1831']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['1831']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['1831']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['1831']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['1831']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['1831']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['1831']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.bch_color = week_per_ch
-                # cl5,col17, col18, col19,col20,g5 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl5:
-                        # st.write(5)
-                # with col17:
-                        # st.image("Images/bshcoin.png")
-                # with col18:
-                        # st.metric(label="Bitcoin cash (BCH)", value=("$"+str(round(price, 2))), delta=str(round(hour24, 2)) + "%")
-                # with col19:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col20:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g5:
-                        # st.write("7 days graph")
-                        # cryptographs.get_bch_graph()
-
-        # def get_ltc():
-                # parameters = {'slug': 'litecoin', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['2']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['2']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['2']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['2']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['2']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['2']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['2']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.ltc_color = week_per_ch
-                # cl6,col21, col22, col23,col24,g6 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl6:
-                        # st.write(6)
-                # with col21:
-                        # st.image("Images/litecoin.png")
-                # with col22:
-                        # st.metric(label="Litecoin (LTC)", value=("$"+str(round(price, 2))),delta=str(round(hour24, 2)) + "%")
-                # with col23:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col24:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g6:
-                        # st.write("7 days graph")
-                        # cryptographs.get_ltc_graph()
-
-        # def get_dot():
-                # parameters = {'slug': 'polkadot', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['6636']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['6636']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['6636']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['6636']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['6636']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['6636']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['6636']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.dot_color = week_per_ch
-                # cl7,col25, col26, col27,col28,g7 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl7:
-                        # st.write(7)
-                # with col25:
-                        # st.image("Images/polkadotcoin.png")
-                # with col26:
-                        # st.metric(label="Polkadot (DOT)", value=("$"+str(round(price, 2))), delta=str(round(hour24, 2)) + "%")
-                # with col27:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col28:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g7:
-                        # st.write("7 days graph")
-                        # cryptographs.get_dot_graph()
-
-        # def get_doge():
-                # parameters = {'slug': 'dogecoin', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['74']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['74']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['74']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['74']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['74']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['74']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['74']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.doge_color = week_per_ch
-                # cl8,col29, col30, col31,col32,g8 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl8:
-                        # st.write(8)
-                # with col29:
-                        # st.image("Images/dogecoin.png")
-                # with col30:
-                        # st.metric(label="Dogecoin (DOGE)", value=("$"+str(round(price, 2))), delta=str(round(hour24, 2)) + "%")
-                # with col31:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col32:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g8:
-                        # st.write("7 days graph")
-                        # cryptographs.get_doge_graph()
-
-
-        # def get_ada():
-                # parameters = {'slug': 'cardano', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['2010']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['2010']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['2010']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['2010']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['2010']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['2010']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['2010']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.ada_color = week_per_ch
-                # cl9,col33, col34, col35,col36,g9 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl9:
-                        # st.write(9)
-                # with col33:
-                        # st.image("Images/adacoin.png")
-                # with col34:
-                        # st.metric(label="Cardano (ADA)", value=("$"+str(round(price, 2))),delta=str(round(hour24, 2)) + "%")
-                # with col35:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col36:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g9:
-                        # st.write("7 days graph")
-                        # cryptographs.get_ada_graph()
-
-
-        # def get_shib():
-                # parameters = {'slug': 'shiba-inu', 'convert': 'CAD'}
-                # session = Session()
-                # session.headers.update(headers)
-                # response = session.get(url, params=parameters)
-                # hour24 = json.loads(response.text)['data']['5994']['quote']['CAD']['percent_change_24h']
-                # price = json.loads(response.text)['data']['5994']['quote']['CAD']['price']
-                # marketcap = json.loads(response.text)['data']['5994']['quote']['CAD']['market_cap']
-                # marketcap_ch = json.loads(response.text)['data']['5994']['quote']['CAD']['market_cap_dominance']
-                # volume = json.loads(response.text)['data']['5994']['quote']['CAD']['volume_24h']
-                # volume_ch = json.loads(response.text)['data']['5994']['quote']['CAD']['volume_change_24h']
-                # week_per_ch = json.loads(response.text)['data']['5994']['quote']['CAD']['percent_change_7d']
-                # graph_color_decision.shib_color = week_per_ch
-                # cl10,col37, col38, col39,col40,g10 = st.columns([0.5,1.5,2,2,2,1.5])
-
-                # with cl10:
-                        # st.write(10)
-                # with col37:
-                        # st.image("Images/shibacoin.png")
-                # with col38:
-                        # st.metric(label="Shiba Inu (SHIB)", value=("$"+str(round(price,5))), delta=str(round(hour24, 2)) + "%")
-                # with col39:
-                        # st.metric(label="Volume (24h)", value=("$"+str(round(volume, 2))), delta=str(round(volume_ch, 2)) + "%")
-                # with col40:
-                        # st.metric(label="Market Cap", value=("$"+str(round(marketcap, 2))),delta=str(round(marketcap_ch, 2)) + "%")
-                # with g10:
-                        # st.write("7 days graph")
-                        # cryptographs.get_shib_graph()
-        # st.write(" ")
-        # hide_img_fs = '''
-                # <style>
-                # button[title="View fullscreen"]{
-                    # visibility: hidden;}
-                # </style>
-                # '''
-
-        # st.markdown(hide_img_fs, unsafe_allow_html=True)
-        # get_btc()
-        # st.write("---------------------------")
-        # get_eth()
-        # st.write("---------------------------")
-        # get_xlm()
-        # st.write("---------------------------")
-        # get_usdt()
-        # st.write("---------------------------")
-        # get_bch()
-        # st.write("---------------------------")
-        # get_ltc()
-        # st.write("---------------------------")
-        # get_dot()
-        # st.write("---------------------------")
-        # get_doge()
-        # st.write("---------------------------")
-        # get_ada()
-        # st.write("---------------------------")
-        # get_shib()
-
-
 
