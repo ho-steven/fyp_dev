@@ -11,7 +11,7 @@ import pandas as pd
 import numpy as np
 from wordcloud import WordCloud
 from PIL import Image
-from mpl_finance import candlestick_ohlc
+from mplfinance import candlestick_ohlc
 import matplotlib.dates as mpl_dates
 
 
