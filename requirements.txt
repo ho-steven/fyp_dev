@@ -18,3 +18,5 @@ whale-alert
 beautifulsoup4
 seaborn
 investpy
+mpl_finance
+wordcloud
