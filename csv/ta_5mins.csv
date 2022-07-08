@@ -1,0 +1,13 @@
+indicator,signal,value
+RSI(14),neutral,45.179
+"STOCH(9,6)",overbought,98.519
+STOCHRSI(14),buy,72.563
+"MACD(12,26)",sell,-53.7
+ADX(14),neutral,26.338
+Williams %R,overbought,-1.083
+CCI(14),neutral,-12.9417
+ATR(14),less_volatility,79.2623
+Highs/Lows(14),neutral,0.0
+Ultimate Oscillator,sell,47.426
+ROC,sell,-0.192
+Bull/Bear Power(13),sell,-18.9556
