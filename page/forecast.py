@@ -20,8 +20,9 @@ import urllib.request
 from urllib.request import Request, urlopen
 import json
 from bs4 import BeautifulSoup
+import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-
+nltk.download('vader_lexicon')
 
 def get_forecast():
 
