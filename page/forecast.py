@@ -225,8 +225,8 @@ def get_chart(ticker,symbol):
 
 def btc_news_sentiment():
     st.subheader('News Sentiment Analysis')
-    url_cryptopanic="https://cryptopanic.com/api/posts/?auth_token=aec4b1e9aec008ffa2461ec16e25f24fb11c0a5b&kind=news&currencies=BTC"
-    for i in range(0,30):
+    url_cryptopanic="https://cryptopanic.com/api/posts/?auth_token=aec4b1e9aec008ffa2461ec16e25f24fb11c0a5b&kind=news&currencies=btc"
+    for i in range(0,20):
         try:
             response_cryptopanic = urllib.request.urlopen(url_cryptopanic)
         except IOError as e:
@@ -261,7 +261,7 @@ def btc_news_sentiment():
 def eth_news_sentiment():
     st.subheader('News Sentiment Analysis')
     url_cryptopanic="https://cryptopanic.com/api/posts/?auth_token=aec4b1e9aec008ffa2461ec16e25f24fb11c0a5b&kind=news&currencies=ETH"
-    for i in range(0,30):
+    for i in range(0,20):
         try:
             response_cryptopanic = urllib.request.urlopen(url_cryptopanic)
         except IOError as e:
@@ -296,7 +296,7 @@ def eth_news_sentiment():
 def bnb_news_sentiment():
     st.subheader('News Sentiment Analysis')
     url_cryptopanic="https://cryptopanic.com/api/posts/?auth_token=aec4b1e9aec008ffa2461ec16e25f24fb11c0a5b&kind=news&currencies=BNB"
-    for i in range(0,30):
+    for i in range(0,20):
         try:
             response_cryptopanic = urllib.request.urlopen(url_cryptopanic)
         except IOError as e:
@@ -331,7 +331,7 @@ def bnb_news_sentiment():
 def sol_news_sentiment():
     st.subheader('News Sentiment Analysis')
     url_cryptopanic="https://cryptopanic.com/api/posts/?auth_token=aec4b1e9aec008ffa2461ec16e25f24fb11c0a5b&kind=news&currencies=SOL"
-    for i in range(0,30):
+    for i in range(0,20):
         try:
             response_cryptopanic = urllib.request.urlopen(url_cryptopanic)
         except IOError as e:
