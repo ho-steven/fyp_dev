@@ -3,7 +3,6 @@ import plotly.graph_objs as go
 import yfinance as yf
 import streamlit as st
 import requests
-from streamlit_lottie import st_lottie_spinner
 import investpy
 from datetime import datetime, date, time
 import pandas as pd
@@ -27,6 +26,7 @@ import finta
 from finta import TA
 import mplfinance as mpf
 from pandas_datareader import data as web
+from pandas import json_normalize
 
 
 def get_forecast():
@@ -47,6 +47,7 @@ def get_forecast():
         st.markdown("***")
         twitter_sentiment("bitcoin")
         st.markdown("***")
+        rf_btc()
         random_forest('BTC-USD')
         st.markdown("***")
         lstm()
@@ -59,6 +60,7 @@ def get_forecast():
         st.markdown("***")
         twitter_sentiment("ethereum")
         st.markdown("***")
+        rf_eth()
         random_forest('ETH-USD')
         st.markdown("***")
         lstm()
@@ -70,6 +72,7 @@ def get_forecast():
         st.markdown("***")
         twitter_sentiment("binance")
         st.markdown("***")
+        rf_bnb()
         random_forest('BNB-USD')
         st.markdown("***")
         lstm()
@@ -81,6 +84,7 @@ def get_forecast():
         st.markdown("***")
         twitter_sentiment("solana")
         st.markdown("***")
+        rf_sol()
         random_forest('SOL-USD')
         st.markdown("***")
         lstm()
@@ -514,15 +518,13 @@ def main(ticker):
 
 
 def random_forest(rf_ticker):
-    st.subheader('Random Forest Model')
+
     yf.pdr_override()
     start = datetime.now() - timedelta(days=30)
     end = datetime.now() - timedelta(days=1)
-    st.info("Random Forest using Technical Indicators")
+    #st.info("Random Forest using Technical Indicators")
     # Get the data from remote source
     data = web.DataReader(rf_ticker, data_source ='yahoo', start=start, end=end)
-    # Finta likes lowercase
-    # data.columns = ["open", "high", "low", "close", "volume"]
     data.rename(columns = {'High':'high', 'Low':'low', 'Open':'open', 'Close':'close', 'Volume':'volume'}, inplace = True)
     data.drop(data.columns[len(data.columns)-2], axis=1, inplace=True)
 
@@ -675,69 +677,99 @@ def random_forest(rf_ticker):
     data = pd.merge(data, VFI, how='inner', on = 'Date')
     data = pd.merge(data, MSD, how='inner', on = 'Date')
     data = pd.merge(data, STC, how='inner', on = 'Date')
-
-
-
     st.dataframe(data)
 
 
+def rf_btc():
+  try:
+    st.subheader('Random Forest Model')
+    base_url = "https://us-central1-fintechcoo.cloudfunctions.net/getRandomForestResult?ticker=BTC-USD"
+    rf_input_date = datetime.today().strftime('%Y-%m-%d')
+    response = (base_url + '&date=' + rf_input_date)
+    url_response = urlopen(response)
+    data_json = json.loads(url_response.read())
+    rf_prediction = data_json["prediction"]
+    rf_accuracy = data_json["accuracy"]
+    rf_date = data_json["date"]
+    rf_ticker = data_json["ticker"]
+    if rf_prediction == "increase":
+        st.info("The Random Forest Model predicts there will be increase in price of BTC-USD 3 days after.")
+    else:
+        st.error("The Random Forest Model predicts there will be decrease in price of BTC-USD 3 days after.")
+    #st.write("The Random Forest Model predicts there will be " , rf_prediction , " in price of " , rf_ticker , " 3 days after.")
+    st.write("The Accuracy of the Random Forest Model is" , rf_accuracy )
+  except:
+    #print("Errors in getting the values")
+    pass
+
+def rf_eth():
+  try:
+    st.subheader('Random Forest Model')
+    base_url = "https://us-central1-fintechcoo.cloudfunctions.net/getRandomForestResult?ticker=ETH-USD"
+    rf_input_date = datetime.today().strftime('%Y-%m-%d')
+    response = (base_url + '&date=' + rf_input_date)
+    url_response = urlopen(response)
+    data_json = json.loads(url_response.read())
+    rf_prediction = data_json["prediction"]
+    rf_accuracy = data_json["accuracy"]
+    rf_date = data_json["date"]
+    rf_ticker = data_json["ticker"]
+    if rf_prediction == "increase":
+        st.info("The Random Forest Model predicts there will be increase in price of ETH-USD 3 days after.")
+    else:
+        st.error("The Random Forest Model predicts there will be decrease in price of ETH-USD 3 days after.")
+    #st.write("The Random Forest Model predicts there will be " , rf_prediction , " in price of " , rf_ticker , " 3 days after.")
+    st.write("The Accuracy of the Random Forest Model is" , rf_accuracy )
+  except:
+    #print("Errors in getting the values")
+    pass
+
+def rf_bnb():
+  try:
+    st.subheader('Random Forest Model')
+    base_url = "https://us-central1-fintechcoo.cloudfunctions.net/getRandomForestResult?ticker=BNB-USD"
+    rf_input_date = datetime.today().strftime('%Y-%m-%d')
+    response = (base_url + '&date=' + rf_input_date)
+    url_response = urlopen(response)
+    data_json = json.loads(url_response.read())
+    rf_prediction = data_json["prediction"]
+    rf_accuracy = data_json["accuracy"]
+    rf_date = data_json["date"]
+    rf_ticker = data_json["ticker"]
+    if rf_prediction == "increase":
+        st.info("The Random Forest Model predicts there will be increase in price of BNB-USD 3 days after.")
+    else:
+        st.error("The Random Forest Model predicts there will be decrease in price of BNB-USD 3 days after.")
+    #st.write("The Random Forest Model predicts there will be " , rf_prediction , " in price of " , rf_ticker , " 3 days after.")
+    st.write("The Accuracy of the Random Forest Model is" , rf_accuracy )
+  except:
+    #print("Errors in getting the values")
+    pass
+
+def rf_sol():
+  try:
+    st.subheader('Random Forest Model')
+    base_url = "https://us-central1-fintechcoo.cloudfunctions.net/getRandomForestResult?ticker=SOL-USD"
+    rf_input_date = datetime.today().strftime('%Y-%m-%d')
+    response = (base_url + '&date=' + rf_input_date)
+    url_response = urlopen(response)
+    data_json = json.loads(url_response.read())
+    rf_prediction = data_json["prediction"]
+    rf_accuracy = data_json["accuracy"]
+    rf_date = data_json["date"]
+    rf_ticker = data_json["ticker"]
+    if rf_prediction == "increase":
+        st.info("The Random Forest Model predicts there will be increase in price of SOL-USD 3 days after.")
+    else:
+        st.error("The Random Forest Model predicts there will be decrease in price of SOL-USD 3 days after.")
+    #st.write("The Random Forest Model predicts there will be " , rf_prediction , " in price of " , rf_ticker , " 3 days after.")
+    st.write("The Accuracy of the Random Forest Model is" , rf_accuracy )
+  except:
+    #print("Errors in getting the values")
+    pass
 
 def lstm():
     st.subheader('LSTM Model')
     st.warning("Under Construction")
 
-#https://tradingview.brianthe.dev/
-#https://investpy.readthedocs.io/_info/introduction.html
 
-#https://github.com/twopirllc/pandas-ta#candles-64
-#https://pypi.org/project/candlestick-patterns-subodh101/
-#https://www.aquaq.co.uk/identifying-japanese-candle-sticks-using-python/
-#https://github.com/SpiralDevelopment/candlestick-patterns
-
-#news
-#https://steemit.com/cryptocurrency/@firstaeon/fetch-cryptopanic-api-for-cryptocurrency-news-using-python
-
-#https://github.com/SanjoShaju/Cryptocurrency-Analysis-Python#cryptocurrency-sentiment-analysisipynb
-
-#https://www.atoti.io/articles/how-im-failing-my-twitter-sentiment-analysis-for-cryptocurrency-prediction/
-
-#https://cryptopanic.com/news/14520233/95M-of-Shorts-Liquidated-as-Bitcoin-Ether-Rise-8
-
-#https://newsdata.io/docs
-#https://newsapi.org/docs/endpoints
-
-#Twitter ***
-#API key: fDNn9PgvwBNf8b5YkqVdexWy8
-# API Secret: sjW9xy6ckF0wRDJKpdKNa1qoBg7lDaYk8421wSqDCloslXxWhq
-# Bearer Token: AAAAAAAAAAAAAAAAAAAAAEpsdAEAAAAAZv9ZkZEGYDInn%2B1dlv%2Fd%2Bxn1j%2Bk%3D3MDLpPo82rfpQjpBRhDVyzukRHsT2KHT9dERAib0GLZJS3GnW1
-#1530761395138359296-Q2BphWd2qzGTh0dl1AhTk2ZHiJ33uV
-#i1D7upqRuoNHYxRE4lWluT5Z3LTQlrDxmMC0vPq4MX5Wr
-#https://colab.research.google.com/drive/1afUKtKBCdi6nO2n39iIGCaSfqUg3GAMJ#scrollTo=VDNM2RrQBapg
-#https://github.com/Drabble/TwitterSentimentAndCryptocurrencies
-#https://www.analyticsvidhya.com/blog/2021/06/twitter-sentiment-analysis-a-nlp-use-case-for-beginners/
-#https://medium.com/thedevproject/powerful-twitter-sentiment-analysis-in-under-35-lines-of-code-a80460db24f6
-#https://github.com/Amey23/Twitter-Sentimental-Analysis/blob/master/Twitter%20Sentiment%20Analysis.ipynb
-#https://colab.research.google.com/drive/1H7CMXEdlrigAdv3ensC6u8-Y-KNOUbu3#scrollTo=177256bf
-#https://colab.research.google.com/github/mrdbourke/tensorflow-deep-learning/blob/main/10_time_series_forecasting_in_tensorflow.ipynb
-
-
-#social media
-#https://pypi.org/project/lunarcrush/
-
-#https://twelvedata.com/docs#exchange-rate
-
-
-#Price Prediction
-#https://thecleverprogrammer.com/2021/12/27/cryptocurrency-price-prediction-with-machine-learning/
-
-#https://medium.com/analytics-vidhya/bitcoin-price-prediction-with-random-forest-and-technical-indicators-python-560800d6f3cd
-
-
-#Random Forest
-#https://medium.com/@maryamuzakariya/project-predict-stock-prices-using-random-forest-regression-model-in-python-fbe4edf01664
-#https://medium.com/analytics-vidhya/bitcoin-price-prediction-with-random-forest-and-technical-indicators-python-560800d6f3cd
-#ta
-#https://github.com/bukosabino/ta/blob/master/examples_to_use/visualize_features.ipynb
-
-
-#https://twelvedata.com/docs#technical-indicators

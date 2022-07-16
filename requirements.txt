@@ -21,10 +21,10 @@ seaborn
 investpy
 mplfinance
 wordcloud
-tensorflow-cpu
 finta
 flair
 textblob
 tweepy
 vaderSentiment
-
+ffn
+PyPortfolioOpt

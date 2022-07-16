@@ -468,6 +468,3 @@ def get_sol():
     st.write("")
     st.write("References: Yahoo Finance, CoinMarketCap, Binance Research")
 
-#As another popular open-source blockchains, Solana also has smart contract functionality in hosting decentralized applications. It was developed on an application called Rust that builds a wide variety of applications; thus, the system of Solana is easier and more accessible for deploying apps and further development among developers, which encourage an exponential growth of the ecosystem (Karuki, 2022). As of May 2022,
-
-#Compared to Bitcoin and Ethereum, Solana is a system replying on Proof of History (POH), that involves a certain procedure of sequential computational steps, in which could make decision between time gap between events by giving it a time stamp, especially with its advantage of high-speed capabilities to offer to its investors as it can process 65,000 transactions per second, block time is just one second.

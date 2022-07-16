@@ -13,50 +13,176 @@ from wordcloud import WordCloud
 from PIL import Image
 from mplfinance.original_flavor import candlestick_ohlc
 import matplotlib.dates as mpl_dates
-
+from tradingview_ta import TA_Handler, Interval
+from datetime import timezone
+import tradingview_ta, requests, os
 
 def get_analyzer():
-
-    def load_lottieurl(url: str):
-        r = requests.get(url)
-        if r.status_code != 200:
-            return None
-        return r.json()
-
-    # lottie_url = "https://assets7.lottiefiles.com/packages/lf20_p9ce3saq.json"
-    # lottie_json = load_lottieurl(lottie_url)
-
-    # st.warning("Under Construction")
-
 
     with st.form(key='my_form'):
         ticker = st.selectbox('Select Ticker',
                               ['BTC/USD','ETH/USD','BNB/USD','SOL/USD','BNB/BTC','BNB/ETH','ETH/BTC', 'SOL/BNB', 'SOL/BTC'])
-        #period = st.selectbox("Period", ('1day','1h','1min'))
+        support_resist_time = st.selectbox('Select the time interval for later support and resistance levels analysis:',
+                                ['1 minute','5 minutes','15 minutes','1 hour','1 day','1 week'])
         width = st.slider("Set the width of the real-time chart ", 200, 1800, 1100, 100) 
         submit_button = st.form_submit_button(label='Submit')
     height = 800
   
     if submit_button:
         if ticker == "BTC/USD":      
-            get_btcusd(height, width)   
+            get_btcusd(height, width)
+            if  support_resist_time == "1 minute":
+                support_resist_main('BTCUSD', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('BTCUSD', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('BTCUSD', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('BTCUSD', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('BTCUSD', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('BTCUSD', '1W')
+            else:
+                pass
+            
         if ticker == "ETH/USD":          
             get_ethusd(height, width)
+            if  support_resist_time == "1 minute":
+                support_resist_main('ETHUSD', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('ETHUSD', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('ETHUSD', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('ETHUSD', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('ETHUSD', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('ETHUSD', '1W')
+            else:
+                pass
+
         if ticker == "BNB/USD":
             get_bnbusd(height, width)
+            if  support_resist_time == "1 minute":
+                support_resist_main('BNBUSD', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('BNBUSD', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('BNBUSD', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('BNBUSD', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('BNBUSD', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('BNBUSD', '1W')
+            else:
+                pass
+
         if ticker == "SOL/USD":
             get_solusd(height, width)
+            if  support_resist_time == "1 minute":
+                support_resist_main('SOLUSD', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('SOLUSD', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('SOLUSD', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('SOLUSD', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('SOLUSD', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('SOLUSD', '1W')
+            else:
+                pass
+
         if ticker == "BNB/BTC":
             get_bnbbtc(height, width)
+            if  support_resist_time == "1 minute":
+                support_resist_main('BNBBTC', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('BNBBTC', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('BNBBTC', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('BNBBTC', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('BNBBTC', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('BNBBTC', '1W')
+            else:
+                pass
+
         if ticker == "BNB/ETH":
             get_bnbeth(height, width)
+            if  support_resist_time == "1 minute":
+                support_resist_main('BNBETH', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('BNBETH', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('BNBETH', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('BNBETH', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('BNBETH', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('BNBETH', '1W')
+            else:
+                pass
+
+
         if ticker == "ETH/BTC":
-            get_ethbtc(height, width)        
+            get_ethbtc(height, width)  
+            if  support_resist_time == "1 minute":
+                support_resist_main('ETHBTC', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('ETHBTC', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('ETHBTC', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('ETHBTC', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('ETHBTC', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('ETHBTC', '1W')
+            else:
+                pass
+
+
         if ticker == "SOL/ETH":
             get_soleth(height, width)
+            if  support_resist_time == "1 minute":
+                support_resist_main('SOLETH', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('SOLETH', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('SOLETH', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('SOLETH', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('SOLETH', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('SOLETH', '1W')
+            else:
+                pass
+
         if ticker == "SOL/BTC":
             get_solbtc(height, width)
-
+            if  support_resist_time == "1 minute":
+                support_resist_main('SOLBTC', '1m')
+            elif support_resist_time == "5 minutes":
+                support_resist_main('SOLBTC', '5m')
+            elif support_resist_time == "15 minutes":
+                support_resist_main('SOLBTC', '15m')
+            elif support_resist_time == "1 hour":
+                support_resist_main('SOLBTC', '1h')
+            elif support_resist_time == "1 day":
+                support_resist_main('SOLBTC', '1d')
+            elif support_resist_time == "1 week":
+                support_resist_main('SOLBTC', '1W')
+            else:
+                pass
 
 
 def get_btcusd(height, width):
@@ -2384,3 +2510,91 @@ def get_solbtc(height, width):
     image_fr = Image.open('Images/fibonacci_solbtc.png')
     st.image(image_fr)
 
+def support_resist_main(ticker, time_period):
+    #Support and resistance figures using Tradingview-TA Library
+    try:
+
+        st.subheader('Support and resistance for your selected time interval')
+        handler = TA_Handler()
+        handler.set_symbol_as(ticker)
+        handler.set_exchange_as_crypto_or_stock("BINANCE")
+        handler.set_screener_as_stock("CRYPTO")
+        handler.set_interval_as(time_period)
+        analysis = handler.get_analysis()
+
+        oscillators=analysis.indicators
+
+        fi_m = oscillators['Pivot.M.Fibonacci.Middle']
+        fi_r1 = oscillators['Pivot.M.Fibonacci.R1']
+        fi_r2 = oscillators['Pivot.M.Fibonacci.R2']
+        fi_r3 = oscillators['Pivot.M.Fibonacci.R3']    
+        fi_s1 = oscillators['Pivot.M.Fibonacci.S1']
+        fi_s2 = oscillators['Pivot.M.Fibonacci.S2']
+        fi_s3 = oscillators['Pivot.M.Fibonacci.S3'] 
+
+        ca_m = oscillators['Pivot.M.Camarilla.Middle']
+        ca_r1 = oscillators['Pivot.M.Camarilla.R1']
+        ca_r2 = oscillators['Pivot.M.Camarilla.R2']
+        ca_r3 = oscillators['Pivot.M.Camarilla.R3']    
+        ca_s1 = oscillators['Pivot.M.Camarilla.S1']
+        ca_s2 = oscillators['Pivot.M.Camarilla.S2']
+        ca_s3 = oscillators['Pivot.M.Camarilla.S3'] 
+        
+        cs_m = oscillators['Pivot.M.Classic.Middle']
+        cs_r1 = oscillators['Pivot.M.Classic.R1']
+        cs_r2 = oscillators['Pivot.M.Classic.R2']
+        cs_r3 = oscillators['Pivot.M.Classic.R3']    
+        cs_s1 = oscillators['Pivot.M.Classic.S1']
+        cs_s2 = oscillators['Pivot.M.Classic.S2']
+        cs_s3 = oscillators['Pivot.M.Classic.S3'] 
+
+        wd_m = oscillators['Pivot.M.Woodie.Middle']
+        wd_r1 = oscillators['Pivot.M.Woodie.R1']
+        wd_r2 = oscillators['Pivot.M.Woodie.R2']
+        wd_r3 = oscillators['Pivot.M.Woodie.R3']    
+        wd_s1 = oscillators['Pivot.M.Woodie.S1']
+        wd_s2 = oscillators['Pivot.M.Woodie.S2']
+        wd_s3 = oscillators['Pivot.M.Woodie.S3'] 
+        
+        st.info('The fibonacci retracement levels are as below:')
+        st.write('Resistance Level 3:', fi_r3)
+        st.write('Resistance Level 2:', fi_r2)
+        st.write('Resistance Level 1:', fi_r1) 
+        st.write('Pivot Point :', fi_m)     
+        st.write('Support Level 1:', fi_s1) 
+        st.write('Support Level 2:', fi_s2)
+        st.write('Support Level 3:', fi_s3) 
+        st.write("")
+
+        st.info('The Classic levels are as below:')
+        st.write('Resistance Level 3:', cs_r3)
+        st.write('Resistance Level 2:', cs_r2)
+        st.write('Resistance Level 1:', cs_r1) 
+        st.write('Pivot Point :', cs_m)     
+        st.write('Support Level 1:', cs_s1) 
+        st.write('Support Level 2:', cs_s2)
+        st.write('Support Level 3:', cs_s3) 
+        st.write("")
+
+        st.info('The Camarilla levels are as below:')
+        st.write('Resistance Level 3:', ca_r3)
+        st.write('Resistance Level 2:', ca_r2)
+        st.write('Resistance Level 1:', ca_r1) 
+        st.write('Pivot Point :', ca_m)     
+        st.write('Support Level 1:', ca_s1) 
+        st.write('Support Level 2:', ca_s2)
+        st.write('Support Level 3:', ca_s3) 
+        st.write("")
+        
+        st.info('The Woodie levels are as below:')
+        st.write('Resistance Level 3:', wd_r3)
+        st.write('Resistance Level 2:', wd_r2)
+        st.write('Resistance Level 1:', wd_r1) 
+        st.write('Pivot Point :', wd_m)     
+        st.write('Support Level 1:', wd_s1) 
+        st.write('Support Level 2:', wd_s2)
+        st.write('Support Level 3:', wd_s3) 
+
+
+    except:
+        pass
