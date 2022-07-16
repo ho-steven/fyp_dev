@@ -22,9 +22,10 @@ investpy
 mplfinance
 wordcloud
 finta
-flair
 textblob
 tweepy
 vaderSentiment
 ffn
 PyPortfolioOpt
+flair
+tradingview_ta
