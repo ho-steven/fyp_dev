@@ -201,7 +201,7 @@ def get_portfolio():
                     st.write(' ')   
 
             except:
-                st.error("Please adjust your volatility level to get a valid result")
+                st.error("Please adjust your return level to get a valid result")
 
 def portfolio_analysis(start_date):
 
