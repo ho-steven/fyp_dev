@@ -823,7 +823,7 @@ def lstm(ticker):
     img_lstm_loss = Image.open('demo_loss_value.png')
     img_lstm_loss = img_lstm_loss.save("Images/lstm_loss.png")
     image_lstm_loss = Image.open('Images/lstm_loss.png')
-    st.image(image_lstm_loss, caption='LSTM Model loss value')
+    #st.image(image_lstm_loss, caption='LSTM Model loss value')
     #img_lstm_loss = img.save("lstm_loss.png") 
     col7, col8, col9 = st.columns([1, 5, 1])
     with col7:
