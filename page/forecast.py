@@ -27,6 +27,7 @@ from finta import TA
 import mplfinance as mpf
 from pandas_datareader import data as web
 from pandas import json_normalize
+from PIL import Image
 
 
 def get_forecast():
@@ -50,7 +51,7 @@ def get_forecast():
         rf_btc()
         random_forest('BTC-USD')
         st.markdown("***")
-        lstm()
+        lstm('BTC-USD')
 
 
     if crypto == "Ethereum (ETH)":
@@ -63,7 +64,7 @@ def get_forecast():
         rf_eth()
         random_forest('ETH-USD')
         st.markdown("***")
-        lstm()
+        lstm('ETH-USD')
 
     if crypto == "Binance Coin (BNB)":
         get_chart('BNB-USD','BNBUSDT')
@@ -75,7 +76,7 @@ def get_forecast():
         rf_bnb()
         random_forest('BNB-USD')
         st.markdown("***")
-        lstm()
+        lstm('BNB-USD')
 
     if crypto == "Solana (SOL)":
         get_chart('SOL-USD','SOLUSDT')
@@ -87,7 +88,7 @@ def get_forecast():
         rf_sol()
         random_forest('SOL-USD')
         st.markdown("***")
-        lstm()
+        lstm('SOL-USD')
 
 
 def get_chart(ticker,symbol):
@@ -396,13 +397,9 @@ class TwitterClient(object):
             print("Error: Authentication Failed")
   
     def clean_tweet(self, tweet):
-
         return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
   
-
-
     def get_textblob_sentiment_score(self, tweet):
-
         analysis = TextBlob(self.clean_tweet(tweet))
         score = analysis.sentiment.polarity
         return score
@@ -419,7 +416,6 @@ class TwitterClient(object):
     def get_vader_sentiment_score(self, tweet):
         vader_analyzer = SentimentIntensityAnalyzer()
         vader_sentiment = vader_analyzer.polarity_scores(self.clean_tweet(tweet)).get("compound")
-
         return vader_sentiment
 
 
@@ -435,9 +431,7 @@ class TwitterClient(object):
                 retweeted = tweet.retweet_count
                 user = tweet.user.name
                 follower = tweet.user.followers_count
-
                 parsed_tweet = {}
-  
                 parsed_tweet['date'] = tweet_date
                 parsed_tweet['text'] = tweet.text
                 parsed_tweet['user'] = user 
@@ -451,15 +445,6 @@ class TwitterClient(object):
                   parsed_tweet['textblob_result'] = "NEGATIVE"
                 else:
                   parsed_tweet['textblob_result'] = "NEUTRAL"
-
-                #parsed_tweet['flair_sentiment'] = self.get_flair_sentiment_score(tweet.text)
-
-                #if parsed_tweet['flair_sentiment'] > 0:
-                #  parsed_tweet['flair_result'] = "POSITIVE"
-                #elif parsed_tweet['flair_sentiment'] < 0:
-                #  parsed_tweet['flair_result'] = "NEGATIVE"
-                #else:
-                #  parsed_tweet['flair_result'] = "NEUTRAL"
 
                 parsed_tweet['vader_sentiment'] = self.get_vader_sentiment_score(tweet.text)
 
@@ -477,16 +462,13 @@ class TwitterClient(object):
                 else:
                   parsed_tweet['overall_sentiment'] = "NEUTRAL"
 
-
                 if tweet.retweet_count > 0:
                     # if tweet has retweets, ensure that it is appended only once
                     if parsed_tweet not in tweets:
                         tweets.append(parsed_tweet)
                 else:
                     tweets.append(parsed_tweet)
-
             return tweets
-  
         except tweepy.errors.TweepyException as e:
             print("Error : " + str(e))
 
@@ -768,8 +750,95 @@ def rf_sol():
     #print("Errors in getting the values")
     pass
 
-def lstm():
-    st.subheader('LSTM Model')
-    st.warning("Under Construction")
+def lstm(ticker):
+  try:
+    st.subheader("LSTM Model")
+    st.info("LSTM model trend prediction 3 days after")
+    lstm_price_url = "https://us-central1-fintechcoo.cloudfunctions.net/getLSTMResult"
+    lstm_prediction_url = "https://us-central1-fintechcoo.cloudfunctions.net/getLSTMPriceResult"
+    lstm_input_date = datetime.today().strftime('%Y-%m-%d')
+    #response = (lstm_price_url + '&date=' + lstm_input_date)
+    response = (lstm_price_url + '?ticker=' + ticker + '&date=' + lstm_input_date)
+    url_response = urlopen(response)
+    data_lstm_price = json.loads(url_response.read())
+    lstm_prediction = data_lstm_price["prediction"]
+    lstm_accuracy = data_lstm_price["accuracy"]
+    lstm_date = data_lstm_price["date"]
+    lstm_ticker = data_lstm_price["ticker"]
+    st.write("The LSTM Model predicts there will be " , lstm_prediction , " in price of " , lstm_ticker , " 3 days after.")
+    st.write("The Accuracy of the LSTM Model is" , lstm_accuracy )
+    st.write("")
+    
+    st.info("LSTM model next day price prediction")
+    prediction_response = (lstm_prediction_url + '?ticker=' + ticker + '&date=' + lstm_input_date)
+    url_response2 = urlopen(prediction_response)
+    data_lstm_predict = json.loads(url_response2.read())
+    lstm_predict_ticker = data_lstm_predict["ticker"]
+    lstm_figure_priceall = data_lstm_predict["figure_price_all"]
+    lstm_figure_price = data_lstm_predict["figure_price"]
+    lstm_loss_value = data_lstm_predict["loss_value"]
+    lstm_predict = data_lstm_predict["predicted_price"]
+    lstm_figure_loss = data_lstm_predict["figure_loss_value"]
+    lstm_predict_date = data_lstm_predict["date"]
+    st.write("The LSTM Model predicts the next date price for ", lstm_predict_ticker , "is: ", lstm_predict)
+    st.write("The loss value of the LSTM Model is: ", lstm_loss_value)
+    st.write("")
+
+    st.info("LSTM Model price prediction - All Period")
+    urllib.request.urlretrieve(lstm_figure_priceall , 'demo_price_all.png')
+    img_priceall = Image.open('demo_price_all.png')
+    img_priceall = img_priceall.save("Images/lstm_priceall.png")
+    image_lstm_priceall = Image.open('Images/lstm_priceall.png')
+    
+    col1, col2, col3 = st.columns([1, 5, 1])
+    with col1:
+        st.write(' ')
+
+    with col2:
+        st.image(image_lstm_priceall, caption='LSTM Model price prediction - All Period')
+
+    with col3:
+        st.write(' ')
+    
+        
+
+    st.info("LSTM Model price prediction")
+    urllib.request.urlretrieve(lstm_figure_price , 'demo_price.png')
+    img_price = Image.open('demo_price.png')
+    img_price = img_price.save("Images/lstm_price.png")
+    image_lstm_price = Image.open('Images/lstm_price.png')
+    
+    col4, col5, col6 = st.columns([1, 5, 1])
+    with col4:
+        st.write(' ')
+
+    with col5:
+        st.image(image_lstm_price, caption='LSTM Model price prediction')
+
+    with col6:
+        st.write(' ')
+
+    st.info("LSTM Model loss value")
+    urllib.request.urlretrieve(lstm_figure_loss , 'demo_loss_value.png')
+    img_lstm_loss = Image.open('demo_loss_value.png')
+    img_lstm_loss = img_lstm_loss.save("Images/lstm_loss.png")
+    image_lstm_loss = Image.open('Images/lstm_loss.png')
+    st.image(image_lstm_loss, caption='LSTM Model loss value')
+    #img_lstm_loss = img.save("lstm_loss.png") 
+    col7, col8, col9 = st.columns([1, 5, 1])
+    with col7:
+        st.write(' ')
+
+    with col8:
+        st.image(image_lstm_loss, caption='LSTM Model loss value')
+
+    with col9:
+        st.write(' ')
+
+
+  except:
+    #print("Errors in getting the values")
+    pass
+
 
 
