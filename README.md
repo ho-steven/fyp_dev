@@ -19,6 +19,6 @@ Starting the App
 
 Project homepage: https://wp.cs.hku.hk/2021/msp21007/about/
 
-CONFIDENTIAL © 2022 ho-steven. All rights reserved.
+CONFIDENTIAL © 2022 All rights reserved.
 
 Any unauthorized use, duplication or distribution without approval is strictly prohibited.
